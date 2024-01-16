@@ -103,64 +103,67 @@ const team = {
         },
         {
             playerName: "Julio Olarticoechea",
-            Position: "",
-            Number: 1,
-            Nickname: ""
+            Position: "defender",
+            Number: 16,
+            Nickname: "N/A"
         },
         {
-            playerName: "",
-            Position: "",
-            Number: 1,
-            Nickname: ""
+            playerName: "Pedro Pasculli",
+            Position: "forward",
+            Number: 17,
+            Nickname: "N/A"
+        },
+        {
+            playerName: "Nery Pumpido",
+            Position: "goalkeeper",
+            Number: 18,
+            Nickname: "N/A"
+        },
+        {
+            playerName: "Oscar Ruggeri",
+            Position: "defender",
+            Number: 19,
+            Nickname: "El Cabezón"
+        },
+        {
+            playerName: "Carlos Tapia",
+            Position: "midfielder",
+            Number: 20,
+            Nickname: "N/A"
+        },
+        {
+            playerName: "Marcelo Trobbiani",
+            Position: "midfielder",
+            Number: 21,
+            Nickname: "Calesita"
+        },
+        {
+            playerName: "Héctor Zelada",
+            Position: "goalkeeper",
+            Number: 22,
+            Nickname: "N/A"
         },
     ]
 }
+//object destructuring
+const {name: myTeam, sport, year:cupYear, coach, players} = team
+teamName.textContent = myTeam;
+sportName.textContent = sport;
+year.textContent = cupYear;
+coachName.textContent = coach
 
-Position: defender
 
-Number: 16
+const playersCategory = (position) =>{
+    //accessed the players property of the team object
+    const allPlayers = team?.players;
 
-Nickname: N/A
+    // looping through the player array
+    const playersElement = allPlayers.filter(player => {
 
-Pedro Pasculli
-Position: forward
-
-Number: 17
-
-Nickname: N/A
-
-Nery Pumpido
-Position: goalkeeper
-
-Number: 18
-
-Nickname: N/A
-
-Oscar Ruggeri
-Position: defender
-
-Number: 19
-
-Nickname: El Cabezón
-
-Carlos Tapia
-Position: midfielder
-
-Number: 20
-
-Nickname: N/A
-
-Marcelo Trobbiani
-Position: midfielder
-
-Number: 21
-
-Nickname: Calesita
-
-Héctor Zelada
-Position: goalkeeper
-
-Number: 22
-
-Nickname: N/A
+        //object destructuring
+        const {playerName, Position: playerPosition, Number, Nickname} = player
+        return playerPosition === position
+    })
+    return playersElement
+}
 
