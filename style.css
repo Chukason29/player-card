@@ -33,6 +33,7 @@ select{
 #result{
     display: flex;
     gap: 1rem;
+    flex-wrap: wrap;
     justify-content: center;
     margin-block-start: 1rem;
 }

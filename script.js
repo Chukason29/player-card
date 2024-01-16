@@ -3,6 +3,8 @@ const teamName = document.getElementById("team-name");
 const sportName = document.getElementById("sport-name");
 const year = document.getElementById("year");
 const coachName = document.getElementById("coach-name");
+const result = document.getElementById("result")
+const positions = document.getElementById("positions")
 
 // object carrying all info
 const team = {
@@ -15,13 +17,13 @@ const team = {
             playerName: "Sergio Almirón",
             Position: "forward",
             Number: 1,
-            Nickname: "N/A"
+            Nickname: ""
         },
         {
             playerName: "Sergio Batista",
             Position: "midfielder",
             Number: 2,
-            Nickname: "N/A"
+            Nickname: ""
         },
         {
             playerName: "Ricardo Bochini",
@@ -57,7 +59,7 @@ const team = {
             playerName: "Néstor Clausen",
             Position: "defender",
             Number: 8,
-            Nickname: "N/A"
+            Nickname: ""
         },
         {
             playerName: "José Luis Cuciuffo",
@@ -81,19 +83,19 @@ const team = {
             playerName: "Héctor Enrique",
             Position: "midfielder",
             Number: 12,
-            Nickname: "N/A"
+            Nickname: ""
         },
         {
             playerName: "Oscar Garré",
             Position: "defender",
             Number: 13,
-            Nickname: "N/A"
+            Nickname: ""
         },
         {
             playerName: "Ricardo Giusti",
             Position: "midfielder",
             Number: 14,
-            Nickname: "N/A"
+            Nickname: ""
         },
         {
             playerName: "Luis Islas",
@@ -105,19 +107,19 @@ const team = {
             playerName: "Julio Olarticoechea",
             Position: "defender",
             Number: 16,
-            Nickname: "N/A"
+            Nickname: ""
         },
         {
             playerName: "Pedro Pasculli",
             Position: "forward",
             Number: 17,
-            Nickname: "N/A"
+            Nickname: ""
         },
         {
             playerName: "Nery Pumpido",
             Position: "goalkeeper",
             Number: 18,
-            Nickname: "N/A"
+            Nickname: ""
         },
         {
             playerName: "Oscar Ruggeri",
@@ -129,7 +131,7 @@ const team = {
             playerName: "Carlos Tapia",
             Position: "midfielder",
             Number: 20,
-            Nickname: "N/A"
+            Nickname: ""
         },
         {
             playerName: "Marcelo Trobbiani",
@@ -141,7 +143,7 @@ const team = {
             playerName: "Héctor Zelada",
             Position: "goalkeeper",
             Number: 22,
-            Nickname: "N/A"
+            Nickname: ""
         },
     ]
 }
@@ -153,6 +155,8 @@ year.textContent = cupYear;
 coachName.textContent = coach
 
 
+
+
 const playersCategory = (position) =>{
     //accessed the players property of the team object
     const allPlayers = team?.players;
@@ -162,8 +166,26 @@ const playersCategory = (position) =>{
 
         //object destructuring
         const {playerName, Position: playerPosition, Number, Nickname} = player
-        return playerPosition === position
+        if(position === "nickname"){
+            return Nickname != ""
+        }else if(position === "all"){
+            return player
+        }else{
+            return playerPosition === position
+        }
     })
     return playersElement
 }
 
+positions.addEventListener("change", () =>{
+    const category = playersCategory(positions.value)
+    result.innerHTML = ""
+    for (const item of category) {
+        result.innerHTML += `<div>
+        <h2>${item.playerName}</h2>
+        <p>Position: ${item.Position}</p>
+        <p>Number: ${item.Number}</p>
+        <p>Nickname: ${item.Nickname}</p>
+    </div>`
+    }     
+})
